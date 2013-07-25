@@ -1,6 +1,6 @@
 Name:           zzuf
 Version:        0.13
-Release:        6.20100215%{?dist}
+Release:        %mkrel 1
 Summary:        Transparent application input fuzzer
 
 Group:          Development/Tools
@@ -8,9 +8,6 @@ License:        WTFPL
 URL:            http://sam.zoy.org/zzuf/
 #Source0:        http://libcaca.zoy.org/files/zzuf/%{name}-%{version}.tar.gz
 Source0:	http://ftp.debian.org/debian/pool/main/z/zzuf/zzuf_0.13.svn20100215.orig.tar.gz
-Patch0:         %{name}-0.13-optflags.patch
-#Patch1:         %{name}-0.9-open.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
 zzuf is a transparent application input fuzzer.  It works by
@@ -21,29 +18,20 @@ bugs.
 
 %prep
 %setup -q
-touch -r configure.ac configure.ac.stamp
-%patch0 -p0
-touch -r configure.ac.stamp configure.ac
-#%patch1 -p1
 
 
 %build
-%configure --disable-dependency-tracking --disable-static
-make %{?_smp_mflags}
-
+%configure2_5x --disable-static
+%make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
-rm $RPM_BUILD_ROOT%{_libdir}/zzuf/libzzuf.la
+%makeinstall_std
 
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+rm -f %{buildroot}%{_libdir}/zzuf/*.la
 
 
 %files
-%defattr(-,root,root,-)
+%defattr(-,root,root)
 %doc AUTHORS COPYING NEWS README TODO
 %{_bindir}/zzuf
 %{_bindir}/zzat
