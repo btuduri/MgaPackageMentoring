@@ -6,13 +6,12 @@ Summary:        Transparent application input fuzzer
 Group:          Development/Tools
 License:        WTFPL
 URL:            http://sam.zoy.org/zzuf/
-#Source0:        http://libcaca.zoy.org/files/zzuf/%{name}-%{version}.tar.gz
-Source0:	http://ftp.debian.org/debian/pool/main/z/zzuf/zzuf_0.13.svn20100215.orig.tar.gz
+Source0:        http://ftp.debian.org/debian/pool/main/z/zzuf/zzuf_0.13.svn20100215.orig.tar.gz
 
 %description
 zzuf is a transparent application input fuzzer.  It works by
 intercepting file operations and changing random bits in the program's
-input.  zzuf's behaviour is deterministic, making it easy to reproduce
+input.  zzuf's behavior is deterministic, making it easy to reproduce
 bugs.
 
 
