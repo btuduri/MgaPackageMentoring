@@ -1,0 +1,25 @@
+--- configure.ac~	2010-01-31 06:20:30.000000000 -0600
++++ configure.ac	2010-02-01 15:54:23.731200793 -0600
+@@ -23,8 +23,6 @@
+ AC_MSG_RESULT($SONAME)
+ AC_DEFINE_UNQUOTED(SONAME, "$SONAME", [Define to the libzzuf full name])
+ 
+-# Optimizations
+-AC_TRY_CFLAGS(-g -O2, CFLAGS="${CFLAGS} -g -O2")
+ # Code qui fait des warnings == code de porc == deux baffes dans ta gueule
+ AC_TRY_CFLAGS(-Wall, CFLAGS="${CFLAGS} -Wall")
+ AC_TRY_CFLAGS(-W, CFLAGS="${CFLAGS} -W")
+--- configure~	2010-01-31 06:25:52.000000000 -0600
++++ configure	2010-02-01 15:55:40.775196966 -0600
+@@ -10765,11 +10765,6 @@
+ _ACEOF
+ 
+ 
+-# Optimizations
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if $CC supports -g -O2 flags" >&5
+-$as_echo_n "checking if $CC supports -g -O2 flags... " >&6; }
+-    SAVE_CFLAGS="$CFLAGS"
+-    CFLAGS="-g -O2"
+     cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
