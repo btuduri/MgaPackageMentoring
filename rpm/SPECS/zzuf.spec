@@ -30,7 +30,6 @@ rm -f %{buildroot}%{_libdir}/zzuf/*.la
 
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS COPYING NEWS README TODO
 %{_bindir}/zzuf
 %{_bindir}/zzat
