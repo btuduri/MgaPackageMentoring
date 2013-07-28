@@ -1,9 +1,9 @@
 Name:           milkytracker
 Version:        0.90.85
-Release:        6%{?dist}
+Release:        %mkrel 1
 Summary:        Module tracker software for creating music
 
-Group:          Applications/Multimedia
+Group:          Sound/Utilities
 License:        GPLv3+
 URL:            http://www.milkytracker.net/
 Source0:        http://milkytracker.org/files/%{name}-%{version}.tar.bz2
@@ -12,12 +12,11 @@ Patch0:         milkytracker-0.90.85-use-system-library.patch
 Patch1:         milkytracker-0.90.85-use-system-library-pregenerated.patch
 Patch2:         milkytracker-0.90.85-integer-types.patch
 Patch3:         milkytracker-0.90.85-gzfile-type.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  SDL-devel
+BuildRequires:  libSDL-devel
 BuildRequires:  desktop-file-utils
-BuildRequires:  zziplib-devel
-BuildRequires:  jack-audio-connection-kit-devel
+BuildRequires:  pkgconfig(zziplib)
+BuildRequires:  pkgconfig(jack)
 
 
 %description
@@ -26,28 +25,28 @@ Its goal is to be free replacement for the popular Fasttracker II software.
 
 %prep
 %setup -q
-find . -regex '.*\.\(cpp\|h\|inl\)' -print0 | xargs -0 chmod 644
+#find . -regex '.*\.\(cpp\|h\|inl\)' -print0 | xargs -0 chmod 644
 
-%patch0 -p1 -b .debug
-%patch1 -p1 -b .debug
-%patch2 -p1 -b .debug
-%patch3 -p1 -b .debug
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 # Explicitly remove source files
 rm -rf src/compression/zlib/
 rm -rf src/compression/zziplib/generic/
 
 # timestamp: touch files to remove autotool call
-touch -r configure aclocal.m4 Makefile.in config.h.in
+#touch -r configure aclocal.m4 Makefile.in config.h.in
 
 %build
-%configure
-make %{?_smp_mflags}
+%configure2_5x --enable-jack
+%make
 
 
 %install
 rm -rf %{buildroot}
-make install DESTDIR=%{buildroot}
+%makeinstall_std
 
 # copy the icon
 mkdir -p %{buildroot}%{_datadir}/pixmaps
@@ -55,25 +54,13 @@ cp -p resources/pictures/carton.png %{buildroot}%{_datadir}/pixmaps/milkytracker
 
 # copy the desktop file
 desktop-file-install \
-%if 0%{?fedora} && 0%{?fedora} < 19
-  --vendor fedora \
-%endif
   --dir=%{buildroot}%{_datadir}/applications/ %{SOURCE1}
 
 
-%clean
-rm -rf %{buildroot}
-
-
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS COPYING NEWS README
 %{_bindir}/milkytracker
-%if 0%{?fedora} && 0%{?fedora} < 19
-%{_datadir}/applications/fedora-%{name}.desktop
-%else
 %{_datadir}/applications/%{name}.desktop
-%endif
 %{_datadir}/pixmaps/milkytracker.png
 
 %changelog
