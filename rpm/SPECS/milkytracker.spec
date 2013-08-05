@@ -50,7 +50,8 @@ rm -rf %{buildroot}
 
 # copy the icon
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp -p resources/pictures/carton.png %{buildroot}%{_datadir}/pixmaps/milkytracker.png
+cp -p resources/pictures/carton.png \
+      %{buildroot}%{_datadir}/pixmaps/milkytracker.png
 
 # copy the desktop file
 desktop-file-install \
