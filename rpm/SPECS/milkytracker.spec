@@ -59,6 +59,10 @@ desktop-file-install \
 
 %files
 %doc AUTHORS COPYING NEWS README
+%doc docs/FAQ.html
+%doc docs/MilkyTracker.html
+%doc docs/ChangeLog.html
+%doc docs/readme_unix
 %{_bindir}/milkytracker
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/milkytracker.png
