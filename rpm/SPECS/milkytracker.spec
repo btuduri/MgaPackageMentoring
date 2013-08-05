@@ -20,8 +20,20 @@ BuildRequires:  pkgconfig(jack)
 
 
 %description
-MilkyTracker is an application for creating music in the .MOD and .XM formats.
+MilkyTracker is an application for creating music.
 Its goal is to be free replacement for the popular Fasttracker II software.
+It is an editor for "tracked" music, i.e. audio samples of instruments
+pitch shifted according to the note data.
+
+It can load the following module formats:
+- 669, AMS, AMF, DBM, CBA, DIGI, DSM, FAR, GMC, GDM, IMF, IT, MOD,
+  MDL, MTM, MXM, OKT, PLM, PSM, PTM, S3M, STM, ULT, UNI, and X.
+
+Export is possible into the formats:
+- XM, MOD, and WAV.
+
+Supported sample and instrument formats:
+- WAV, IFF/XI, PAT
 
 %prep
 %setup -q
@@ -72,6 +84,7 @@ desktop-file-install \
 * Mon Aug 5 2013 Florent Monnier (@ Mageia)
 - Added documentations
 - Fixed homepage link
+- More detailed description, imported from Debian's description
 
 * Thu Feb 14 2013 Toshio Kuratomi <toshio@fedoraproject.org> - 0.90.85-6
 - Remove the --vendor flag from desktop-file-install https://fedorahosted.org/fesco/ticket/1077
