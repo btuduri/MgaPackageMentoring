@@ -5,7 +5,7 @@ Summary:        Module tracker software for creating music
 
 Group:          Sound/Utilities
 License:        GPLv3+
-URL:            http://www.milkytracker.net/
+URL:            http://www.milkytracker.org/
 Source0:        http://milkytracker.org/files/%{name}-%{version}.tar.bz2
 Source1:        %{name}.desktop
 Patch0:         milkytracker-0.90.85-use-system-library.patch
@@ -70,6 +70,7 @@ desktop-file-install \
 %changelog
 * Mon Aug 5 2013 Florent Monnier (@ Mageia)
 - Added documentations
+- Fixed homepage link
 
 * Thu Feb 14 2013 Toshio Kuratomi <toshio@fedoraproject.org> - 0.90.85-6
 - Remove the --vendor flag from desktop-file-install https://fedorahosted.org/fesco/ticket/1077
