@@ -68,6 +68,9 @@ desktop-file-install \
 %{_datadir}/pixmaps/milkytracker.png
 
 %changelog
+* Mon Aug 5 2013 Florent Monnier (@ Mageia)
+- Added documentations
+
 * Thu Feb 14 2013 Toshio Kuratomi <toshio@fedoraproject.org> - 0.90.85-6
 - Remove the --vendor flag from desktop-file-install https://fedorahosted.org/fesco/ticket/1077
 
