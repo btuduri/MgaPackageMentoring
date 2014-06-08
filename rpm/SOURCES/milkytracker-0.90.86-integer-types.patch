@@ -1,0 +1,108 @@
+diff -Naur milkytracker-0.90.86-vanilla/src/tracker/sdl/SDL_Main.cpp milkytracker-0.90.86-types/src/tracker/sdl/SDL_Main.cpp
+--- milkytracker-0.90.86-vanilla/src/tracker/sdl/SDL_Main.cpp	2013-11-09 01:11:37.000000000 +0100
++++ milkytracker-0.90.86-types/src/tracker/sdl/SDL_Main.cpp	2014-06-08 19:27:19.000000000 +0200
+@@ -53,6 +53,8 @@
+ #include <unistd.h>
+ #include <sys/types.h>
+ 
++#include <stdint.h>
++
+ #include <SDL.h>
+ #ifndef __QTOPIA__
+ #ifdef HAVE_X11
+@@ -154,9 +156,9 @@
+ struct
+ {
+ 	bool up, down, left, right, upLeft, upRight, downLeft, downRight;
+-	pp_int32 x, y;
+-	pp_int32 ticks;
+-	pp_int32 button;
++	intptr_t x, y;
++	intptr_t ticks;
++	intptr_t button;
+ } mouse;
+ 
+ void gp2xMouseEvent(const SDL_Event& event)
+@@ -393,7 +395,7 @@
+ }
+ #endif
+ 
+-void translateMouseDownEvent(pp_int32 mouseButton, pp_int32 localMouseX, pp_int32 localMouseY)
++void translateMouseDownEvent(intptr_t mouseButton, intptr_t localMouseX, intptr_t localMouseY)
+ {
+ 	if (mouseButton > 2 || !mouseButton)
+ 		return;
+@@ -467,7 +469,7 @@
+ 	}
+ }
+ 
+-void translateMouseUpEvent(pp_int32 mouseButton, pp_int32 localMouseX, pp_int32 localMouseY)
++void translateMouseUpEvent(intptr_t mouseButton, intptr_t localMouseX, intptr_t localMouseY)
+ {
+ 	myDisplayDevice->transform(localMouseX, localMouseY);
+ 
+@@ -551,7 +553,7 @@
+ 	}
+ }	
+ 
+-void translateMouseMoveEvent(pp_int32 mouseButton, pp_int32 localMouseX, pp_int32 localMouseY)
++void translateMouseMoveEvent(intptr_t mouseButton, intptr_t localMouseX, intptr_t localMouseY)
+ {
+ 	myDisplayDevice->transform(localMouseX, localMouseY);
+ 
+@@ -740,7 +742,7 @@
+ {
+ 	union {
+ 		void *ptr;
+-		pp_int32 i32;
++		intptr_t i32;
+ 	} data1, data2;
+ 	data1.ptr = event.data1;
+ 	data2.ptr = event.data2;
+@@ -776,8 +778,8 @@
+ 
+ 		case SDLUserEventMidiKeyDown:
+ 		{
+-			pp_int32 note = data1.i32;
+-			pp_int32 volume = data2.i32;
++			intptr_t note = data1.i32;
++			intptr_t volume = data2.i32;
+ 			globalMutex->lock();
+ 			myTracker->sendNoteDown(note, volume);
+ 			globalMutex->unlock();
+@@ -786,7 +788,7 @@
+ 
+ 		case SDLUserEventMidiKeyUp:
+ 		{
+-			pp_int32 note = data1.i32;
++			intptr_t note = data1.i32;
+ 			globalMutex->lock();
+ 			myTracker->sendNoteUp(note);
+ 			globalMutex->unlock();
+@@ -898,7 +900,7 @@
+ 	PPSize windowSize = myTracker->getWindowSizeFromDatabase();
+  	if (!fullScreen) 
+ 		fullScreen = myTracker->getFullScreenFlagFromDatabase();
+-	pp_int32 scaleFactor = myTracker->getScreenScaleFactorFromDatabase();
++	intptr_t scaleFactor = myTracker->getScreenScaleFactorFromDatabase();
+ 
+ #ifdef __LOWRES__
+ 	windowSize.width = DISPLAYDEVICE_WIDTH;
+@@ -921,7 +923,7 @@
+ 	// On Qtopia I have to run a short event loop
+ 	// until drawing/blitting can be performed
+ 	// so the splash screen will be visible
+-	for (pp_int32 i = 0; i < 500; i++)
++	for (intptr_t i = 0; i < 500; i++)
+ 	{
+ 		SDL_Event event;
+ 		SDL_PollEvent(&event);
+@@ -984,7 +986,7 @@
+ 	SDL_Event event;
+ 	char *loadFile = 0;
+ 	
+-	pp_int32 defaultBPP = -1;
++	intptr_t defaultBPP = -1;
+ 	PPDisplayDevice::Orientations orientation = PPDisplayDevice::ORIENTATION_NORMAL;
+ 	bool swapRedBlue = false, fullScreen = false, noSplash = false;
+ 	bool recVelocity = false;
