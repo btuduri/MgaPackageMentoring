@@ -1,5 +1,5 @@
 Name:           milkytracker
-Version:        0.90.85
+Version:        0.90.86
 Release:        %mkrel 1
 Summary:        Module tracker software for creating music
 
@@ -8,10 +8,9 @@ License:        GPLv3+
 URL:            http://www.milkytracker.org/
 Source0:        http://milkytracker.org/files/%{name}-%{version}.tar.bz2
 Source1:        %{name}.desktop
-Patch0:         milkytracker-0.90.85-use-system-library.patch
-Patch1:         milkytracker-0.90.85-use-system-library-pregenerated.patch
-Patch2:         milkytracker-0.90.85-integer-types.patch
-Patch3:         milkytracker-0.90.85-gzfile-type.patch
+Patch0:         milkytracker-0.90.86-use-system-library.patch
+Patch1:         milkytracker-0.90.86-use-system-library-pregenerated.patch
+Patch2:         milkytracker-0.90.86-integer-types.patch
 
 BuildRequires:  libSDL-devel
 BuildRequires:  desktop-file-utils
@@ -42,7 +41,6 @@ Supported sample and instrument formats:
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 # Explicitly remove source files
 rm -rf src/compression/zlib/
@@ -81,6 +79,11 @@ desktop-file-install \
 %{_datadir}/pixmaps/milkytracker.png
 
 %changelog
+* Sun Jun 8 2014 Florent Monnier (@ Mageia)
+- Updated for last version 0.90.86
+- updated patches 0, 1 and 2
+- removed patch 3 that is not needed anymore
+
 * Mon Aug 5 2013 Florent Monnier (@ Mageia)
 - Added documentations
 - Fixed homepage link
