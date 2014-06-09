@@ -81,7 +81,7 @@ desktop-file-install \
 %{_datadir}/pixmaps/milkytracker.png
 
 %changelog
-* Mon Aug 5 2013 Florent Monnier (@ Mageia)
+* Mon Aug 5 2013 Florent Monnier (@ Mageia) - 0.90.85-1.mga5
 - Added documentations
 - Fixed homepage link
 - More detailed description, imported from Debian's description
