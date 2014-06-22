@@ -101,7 +101,7 @@ desktop-file-install \
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.90.85-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
-* Wed Jun 07 2011 Joonas Sarajärvi <muepsj@gmail.com> - 0.90.85-1
+* Tue Jun 07 2011 Joonas Sarajärvi <muepsj@gmail.com> - 0.90.85-1
 - Update to upstream version 0.90.85
 - Redo the build system tweaks to avoid using bundled zziplib
 - Fix integer type errors
