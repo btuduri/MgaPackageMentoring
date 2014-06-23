@@ -23,7 +23,9 @@ zzuf  0.13 :
 -----------
 1. Open archives directory :
 
+```
     cd archives
+```
 
 2. Download the fedora package :
 
