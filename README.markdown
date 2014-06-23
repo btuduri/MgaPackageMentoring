@@ -28,9 +28,7 @@ Milkytracker 0.90.85 :
 2. Download the fedora package :
 
     $ wget `cat milkytracker-0.90.85-8.fc21.src.rpm.download-url`
-
     $ sha512sum -c milkytracker-0.90.85-8.fc21.src.rpm.download-url.sha512
-
     $ milkytracker-0.90.85-8.fc21.src.rpm: OK
 
 3. Install the fedora rpm in your packaging workspace :
@@ -40,7 +38,6 @@ Milkytracker 0.90.85 :
 4. Replace the fedora SPEC file by the one of this repository :
 
     $ cd ../rpm
-
     $ cp ./milkytracker.spec $HOME/rpmbuild/SPEC
 
 5. Go to the rpmbuild SPEC directory :
@@ -53,4 +50,4 @@ Milkytracker 0.90.85 :
 
 7. Build the package :
 
-   $ bm -l milkytracker.spec
+    $ bm -l milkytracker.spec
