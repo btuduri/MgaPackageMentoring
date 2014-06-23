@@ -19,8 +19,8 @@ _Only zzuf and milkytracker 0.90.85 are buildable_
 
 _Before you need to have a rpmbuild up to date and correctly configured for Mageia system. (cf the mageia wiki)._
 
-Milkytracker 0.90.85 :
----------------------
+zzuf  0.13 :
+-----------
 1. Open archives directory :
 
     cd archives
